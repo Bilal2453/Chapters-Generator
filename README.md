@@ -12,15 +12,15 @@ For now, only OGG/OGM text format is supported, but in the future XML matroska c
 2. Re-Open Aegisub, or reload your plugins.
 
 ## How to use
-1. Make a new subtitle line.
+1. Create a new subtitle line.
 
-2. Toggle comment on.
+2. Toggle line comment on.
 ![Step 2: Comment](https://i.imgur.com/PBGmVEE.png)
 
 3. Type your chapter title/name.
 ![Step 3: Title](https://i.imgur.com/k6HZNcA.png)
 
-4. Time your translation line, As the start of the chapter and the end.
+4. Time your translation line, Chapter start and chapter end.
 ![Step 4: Time](https://i.imgur.com/WRI3A0w.png)
 
 5. Change the effect field to "chapter"
@@ -34,6 +34,7 @@ Choose Data format (extenion)
 
 Click Save
 ![Save](https://i.imgur.com/6ogHlBK.png)
+
 
 Choose file name and path
 
