@@ -8,8 +8,8 @@ For now, This Script only available as an Aegisub plugin.
 For now, only OGG/OGM text format is supported, but in the future XML matroska chapters also will be supported.
 
 ## installition
-1. Copy the [Script](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) to program directoy `(your_aegisub_installition/automation/autoload/)`
-2. Re-Open Aegisub, or reload your plugins.
+- Copy the [Script](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) to program directoy `(your_aegisub_installition/automation/autoload/)`
+- Re-Open Aegisub, or reload your plugins.
 
 ## How to use
 1. Make a new subtitle line.
@@ -36,3 +36,11 @@ Click Save
 ![Save](https://i.imgur.com/6ogHlBK.png)
 
 Choose file name and path
+
+## Known Problems
+- Weird Characters Appers when using MKV Toolnix (or other)
+  If your Chapter files contains non-english character, Try changing your charset to UTF-8
+  
+  ![Problem](https://i.imgur.com/rQ3RfgZ.png)
+  ![Solve](https://i.imgur.com/tqDTb9l.png)
+  ![Solved](https://i.imgur.com/cTVmtw8.png)
