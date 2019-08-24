@@ -14,7 +14,8 @@ For now, only OGG/OGM text format is supported, but in the future XML matroska c
 1. Copy the [Script](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) to program directoy `(your_aegisub_installition/automation/autoload/)`
 2. Re-Open Aegisub, or reload your plugins.
 
-1.&#x202b; انسخ (البرنامج)[https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua] وضعه في مسار تثبيت الإيجيسب `مسار_التثبيت/automation/autoload/`
+1. &#x202b; انسخ [البرنامج](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) وضعه هذا المسار
+&#x202b;`مسار_تثبيت_الإيجيسب/autoload/automation`
 
 ## How to use
 1. Create a new subtitle line.
