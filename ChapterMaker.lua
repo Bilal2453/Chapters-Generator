@@ -86,7 +86,7 @@ end
 
 --------- Aegisub's modules ---------
 local sett = {}
-sett.path = aegisub.decode_path("?user/config/ChapterGen.setting")
+sett.path = aegisub.decode_path("?user/ChapterGen.setting")
 
 function sett.writeSett(d)
 	if not io.open(sett.path, 'r') then
