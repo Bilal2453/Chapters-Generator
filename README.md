@@ -9,7 +9,7 @@ For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plu
 ## Supported Formats    الصيغ الدعومة
 For now, only OGG/OGM text format is supported, but in the future XML matroska chapters also will be supported.
 
-على أنها معلومات نصية فقط OGG/OGM للوقت الراهن، هذا البرنامج يدعم صيغة
+على أنها معلومات نصية فقط&#x202b; OGG/OGM &#x202b;للوقت الراهن، هذا البرنامج يدعم صيغة
 "عمّا قريب سيتم دعم صيغة الإكس إم إل بنظام فصول ماتروسكا "ماتروسكا تشابترز
 ## installition   التثبيت
 1. Copy the [Script](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) to program directoy `(your_aegisub_installition/automation/autoload/)`
