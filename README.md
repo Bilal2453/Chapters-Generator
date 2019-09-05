@@ -38,7 +38,7 @@ For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plu
 4. Time your translation line, Chapter start and chapter end.
 (Note: If you are using .xml ext and you don't want to set chapter's end time, make it the same as start time)
 4) &#x202b; ضع توقيت سطر الترجمة، وقت بداية التشابتر ثم نهايته
-4) &#x202b; (ملاحظو مهمة، إذا كنت تستخدم صيغة الإكس إم إل ولا تريد وضع توقيت لنهاية الفصل "التشابتر"، اجعل توقيت النهاية مساوياً لتوقيت البداية)
+&#x202b; (ملاحظو مهمة، إذا كنت تستخدم صيغة الإكس إم إل ولا تريد وضع توقيت لنهاية الفصل "التشابتر"، اجعل توقيت النهاية مساوياً لتوقيت البداية)
 
 ![Step 4: Time](https://i.imgur.com/WRI3A0w.png)
 
