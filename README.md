@@ -2,15 +2,15 @@
 Script that Generates video chapters.
 
 .برنامج يولد ملفات الفصول (تشابتر) للفيديوهات
-## Supporting   الدعم
+## Supporting | الدعم
 For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plugin.
 
 &#x202b; للوقت الراهن، هذا البرنامج متوفر كإضافة لبرنامج [الإيجيسب](http://www.aegisub.org/) فقط 
-## Supported Formats    الصيغ الدعومة
-For now, only OGG/OGM text format is supported, but in the future XML matroska chapters also will be supported.
+## Supported Formats | الصيغ الدعومة
+- OGG/OGM (.txt)
+- Matroska Chapters (.xml)
 
-&#x202b;للوقت الراهن، هذا البرنامج لا يدعم سوى صيغة OGG/OGM النصية، ولكن في المستقبل سيتم دعم الإكس إم إل بنظام "فصول ماتروسكا" - "ماترسوكا تشابترز".
-## installition   التثبيت
+## installition | التثبيت
 1. Copy the [Script](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) to program directoy `(your_aegisub_installition/automation/autoload/)`
 1) انسخ [البرنامج](https://github.com/Bilal2453/Chapter-Genrator/blob/master/ChapterMaker.lua) وضعه في هذا المسار
 &#x202b;`مسار_تثبيت_الإيجيسب/autoload/automation`
@@ -19,7 +19,7 @@ For now, only OGG/OGM text format is supported, but in the future XML matroska c
 2. Re-Open Aegisub, or reload your plugins.
 2) &#x202b; أعد تشغيل الإيجيسب، أو أعد تحميل الأضافات
 
-## How to use   كيفكية الاستخدام
+## How to use | كيفية الاستخدام
 1. Create a new subtitle line.
 1) &#x202b; انشئ سطر ترجمة جديد
 
