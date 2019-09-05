@@ -1,29 +1,25 @@
-script_name = "Chapter Genrator"
-script_namespace = "ChapterGen.lua"
-script_description = "Generates chapter files from lines timeline."
-script_version = '1.0.0'
-script_author = "Bilal Bassam, Bilal2453@github.com"
+--[[This script is under MIT license]]
+script_name			= "Chapter Genrator"
+script_namespace	= "ChapterGen.lua"
+script_description= "Generates chapter files from line's timeline."
+script_version		= '1.3.1'
+script_author		= "Bilal Bassam, Bilal2453@github.com"
+script_modified 	= "3 September 2019"
 
-local function newChapter(startTime, endTime, cpString, lang, flag)
-	if type(startTime) == 'table' then
-		endTime 	= startTime.endTime
-		cpString	= startTime.cpString
-		lang		= startTime.lang
-		flag		= startTime.flag
-		startTime= startTime.startTime
-	end
-
-	return {
-		startTime= startTime,
-		endTime	= endTime,
-		cpString	= cpString,
-		lang		= lang,
-		flag		= flag and true,
+local function newChapter(startTime, endTime, cpString, flaghidden, lang)
+	local tO = type(startTime) == 'table'
+	local o = {
+		endTime 		= tO and startTime.endTime or endTime,
+		cpString 	= tO and startTime.cpString or cpString,
+		lang 			= tO and startTime.lang or lang,
+		flaghidden 	= tO and startTime.flaghidden or flaghidden,
+		startTime 	= tO and startTime.startTime or startTime,
 	}
+
+	return o
 end
 
 ---------  ---------
-
 local function hTime(time)
 	if not time then return '' end
 	local hours, mins, secs, ms
@@ -51,11 +47,41 @@ local function OGMAssembler(no, time, name)
 			  '\n')
 end
 
+local function XMLAssembler(startTime, endTime, cpString, flaghidden, lang)
+	if type(startTime) == 'table' then
+		endTime		= startTime.endTime
+		cpString		= startTime.cpString
+		flaghidden	= startTime.flaghidden
+		lang			= startTime.lang
+		startTime	= startTime.startTime
+	end
+
+	endTime = endTime > startTime and hTime(endTime)
+	endTime = endTime and ('\n\t\t\t<ChapterTimeEnd>%s</ChapterTimeEnd>'):format(endTime) or ''
+
+	startTime = hTime(startTime)
+	cpString = cpString or ''
+	lang, flaghidden = type(lang or 1) == 'string' and lang or 'und', flaghidden and 1 or 0
+
+
+	return ([[
+		<ChapterAtom>
+			<ChapterTimeStart>%s</ChapterTimeStart>%s
+			<ChapterFlagHidden>%d</ChapterFlagHidden>
+			<ChapterDisplay>
+				<ChapterString>%s</ChapterString>
+				<ChapterLanguage>%s</ChapterLanguage>
+			</ChapterDisplay>
+		</ChapterAtom>
+	]]):format(startTime, endTime, flaghidden, cpString, lang)
+end
 --------- Aegisub's GUI ---------
 local types = {
-	[".txt (OGG/OGM)"] = "OGG/OGM txt files (.txt)|.txt|All Files (.)|.",
+	[".txt (OGG/OGM)"] = "OGG/OGM text (.txt)|.txt|All Files (.)|.",
+	[".xml (Matroska Chapters)"] = "Matroska Chapters (.xml)|.xml|All Files (.)|.",
 }
-function show()
+
+function show(sel)
 	local GUI = {
 		label = {
 			class = "label",
@@ -70,8 +96,9 @@ function show()
 
 			items = {
 				".txt (OGG/OGM)",
+				'.xml (Matroska Chapters)',
 			},
-			value = ".txt (OGG/OGM)",
+			value = sel or ".txt (OGG/OGM)",
 
 			x = 2,
 		}
@@ -81,10 +108,29 @@ function show()
 end
 
 function save(lp, ln, lt)
-	return aegisub.dialog.save("Save Chapter", lp or '', ln or 'Chapter.txt', lt or '')
+	return aegisub.dialog.save("Save Chapter", lp or '', ln or 'Chapter', lt or '')
+end
+
+function error(tx, ...)
+	local args = {...}
+	args = #args < 1 and {''} or args
+
+	tx = tx and tostring(tx) or "Unknown Error"
+	tx = string.format(tx, table.unpack(args))
+
+	aegisub.dialog.display({
+		label = {
+			class = "label",
+			label = tx,
+			x = 1,
+			width = 10,
+		}
+	}, {"&Close"}, {close = "&Close"})
+	aegisub.cancel()
 end
 
 --------- Aegisub's modules ---------
+
 local sett = {}
 sett.path = aegisub.decode_path("?user/ChapterGen.setting")
 
@@ -128,12 +174,42 @@ function sett.readSett(f)
 end
 
 
-local function OGMParser(lines)
+local function parseInput(tx)
+	local options = {
+		flaghidden = 'boolean',
+		lang = 'string',
+	}
+	local oInput = {}
+
+	for n, v in tx:gmatch('%-(.-):%s*(.-)%-') do
+		-- Uhh, this is ugly...
+		if options[n] then
+			if tonumber(v) and options[n] == 'boolean' then
+				oInput[n] = tonumber(v) == 1 or false
+			elseif tonumber(v) and options[n] == 'number' then
+				oInput[n] = tonumber(v)
+			elseif options[n] == 'string' and not tonumber(v) then
+				oInput[n] = v
+			else
+				error("Invalid value '%s' for argument '%s'\nvalue type must be a %s",
+					v, n, options[n])
+			end
+		else
+			error("Unknown argument '%s'", n)
+		end
+
+	end
+
+	return oInput
+end
+
+
+local function OGMWriter(lines)
 	local str = ''
 
 	local obj
 	for i, line in ipairs(lines) do
-		obj = newChapter{cpString = line.content, startTime = line.startTime}
+		obj = newChapter(line)
 
 		obj.no = i
 		str = str.. OGMAssembler(obj)
@@ -143,37 +219,68 @@ local function OGMParser(lines)
 	return str
 end
 
+local function XMLWriter(lines)
+	local str = ('<?xml version="1.0"?>\n<!-- <!DOCTYPE Chapters SYSTEM "matroskachapters.dtd"> -->\n<Chapters>\n\t<EditionEntry>\n')
+
+	for _, line in ipairs(lines) do
+		str = str.. XMLAssembler(newChapter(line))
+	end
+
+	return str.. '\t</EditionEntry>\n</Chapters>'
+end
+
+-- Maps between file extensions and Writers
+local wToS = {
+	['.txt (OGG/OGM)'] = OGMWriter,
+	['.xml (Matroska Chapters)'] = XMLWriter,
+}
 
 function macro(lines)
-	local b, data = show()
-	if not b then aegisub.cancel() end
-
 	local fLines = {}
 
+	local iTable
 	for _, v in ipairs(lines) do
 		if v.class == "dialogue" and v.comment
-			and v.effect:lower():find("chapter") then
-				-- TODO: Proccess GUI Data
-				table.insert(fLines, {
-				content = v.text,
-				startTime = v.start_time,
-			})
+		and v.effect:lower():find("chapter") then
+			iTable = {
+				cpString 	= v.text,
+				startTime 	= v.start_time,
+				endTime		= v.end_time,
+			}
+
+			for i, n in pairs(parseInput(v.effect:lower())) do
+				iTable[i] = n
+			end
+
+			table.insert(fLines, iTable)
+
 		end
 	end
 
-	local ot = OGMParser(fLines)
+	if #fLines < 1 then
+		error('No chapter lines were found !!')
+	end
 
-	local ld = sett.readSett()
-	local op = save(ld.lastUsedPath, ld.lastUsedName, types[data.dropdown])
-	if not op then aegisub.cancel() end
+	local rSett = sett.readSett()
 
-	local file = assert(io.open(op, 'wb'), "Can't create this file")
+	local b, data = show(rSett.lastUsedExt)
+	if not b then aegisub.cancel() end
+
+	local tData = wToS[data.dropdown](fLines)
+
+	local saveFile = save(rSett.lastUsedPath, rSett.lastUsedName, types[data.dropdown])
+	if not saveFile then aegisub.cancel() end
+
+	local file = io.open(saveFile, 'wb')
+	if not file then error("Can't create the chapter file\nPlease try choose another directory") end
+
 	sett.writeSett{
-		lastUsedPath = op,
-		lastUsedName = op:gsub('(.-)\\', ''),
+		lastUsedPath	= saveFile,
+		lastUsedName	= saveFile:gsub('.-\\(.-)%..+', '%1'),
+		lastUsedExt		= data.dropdown,
 	}
 
-	file:write(ot)
+	file:write(tData)
 	file:close()
 end
 
