@@ -30,12 +30,12 @@ For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plu
 
 ![Step 2: Comment](https://i.imgur.com/PBGmVEE.png)
 
-3. Type your chapter title/name.
+3. Type your chapter's title/name.
 3) &#x202b; اكتب في سطر الترجمة عنوان الفصل أو اسمه
 
 ![Step 3: Title](https://i.imgur.com/k6HZNcA.png)
 
-4. Time your translation line, Chapter start and chapter end.
+4. Time your translation line, Chapter's start and chapter's end.
 (Note: If you are using .xml ext and you don't want to set chapter's end time, make it the same as start time)
 4) &#x202b; ضع توقيت سطر الترجمة، وقت بداية التشابتر ثم نهايته
 &#x202b; (ملاحظة مهمة، إذا كنت تستخدم صيغة الإكس إم إل ولا تريد وضع توقيت لنهاية الفصل "التشابتر"، اجعل توقيت النهاية مساوياً لتوقيت البداية)
@@ -70,8 +70,8 @@ Choose file name and path
 
 
 ## Known Problems
-- Weird Characters Appers when using MKV Toolnix (or other tools)
-  If your Chapter files contains non-english character, Try changing your charset to UTF-8
+- Weird Characters appears when using MKV Toolnix (or other tools)
+  If your Chapter file contains non-english character, Try changing charset to UTF-8
   
   ![Problem](https://i.imgur.com/rQ3RfgZ.png)
   ![Solve](https://i.imgur.com/tqDTb9l.png)
