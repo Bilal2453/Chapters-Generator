@@ -180,7 +180,7 @@ function sett.readSett(f)
 		data[i] = v
 	end
 
-	file:close() -- For some reason, Lua doesn't close it automaticly
+	file:close() -- For some reason, Lua doesn't close it automatically
 
 	return (f and data[f]) or (not f and data)
 end
@@ -339,7 +339,7 @@ function macro_export_to_video(lines)
 	-- If not, please open an issue on github
 	local mkvmerge = (dp'?data'.. '/automation/include/mkvmerge.exe')
 	
-	-- TODO: Better check for mkvmerge existens, this is awful
+	-- TODO: Better check for mkvmerge existent, this is awful
 	if not io.open(mkvmerge, 'r') then error('mkvmerge.exe is missing\nPlease make sure mkvmerge.exe is in your automation/include dir then try again') end
 	
 	local setts = sett.readSett()
