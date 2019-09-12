@@ -321,12 +321,12 @@ function macro_export_as(lines)
 	local s, err = generateFile(lines, saveFile, data.dropdown)
 	if not s then error(err) end
 
-	for i, v in ipairs(lines) do
+	--[[for i, v in ipairs(lines) do
 		if v.class == "dialogue" and v.comment
 		and v.effect:lower():find("chapter") then
 			lines.delete(i)
 		end
-	end
+	end]]
 end
 
 function macro_export_to_video(lines)
