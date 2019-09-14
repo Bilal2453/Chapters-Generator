@@ -353,7 +353,7 @@ function macro_export_to_video(lines)
 	local tmpChapDir = (dp'?temp'..'/tmp_chapter'..wToE[data])
 	table.insert(temps, tmpChapDir)
 
-	local videoSource = aegisub.dialog.open('Choose a video...', '', setts.lastUsedPath, 'All supported videos|*.mkv;*.mp4;*.m4v;*.ts;*.m2ts;*.mts;*.ogg;*.ogm;*.ogv;*.webm;*.webmv;*.mpv;*.mpg;*.mpeg;*.m1v;*.m2v;*.evo;*.evob;*.vob;*.rmvb;*.avi;*.mov;*.3gp;*.flac;*.flv;*;', false, true)
+	local videoSource = aegisub.dialog.open('Choose a video...', '', setts.lastUsedPath or '', 'All supported videos|*.mkv;*.mp4;*.m4v;*.ts;*.m2ts;*.mts;*.ogg;*.ogm;*.ogv;*.webm;*.webmv;*.mpv;*.mpg;*.mpeg;*.m1v;*.m2v;*.evo;*.evob;*.vob;*.rmvb;*.avi;*.mov;*.3gp;*.flac;*.flv;*;', false, true)
 	if not videoSource then aegisub.cancel() end
 
 	-- Create temporary chapter file
