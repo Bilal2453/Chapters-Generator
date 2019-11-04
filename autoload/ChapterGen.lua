@@ -504,8 +504,9 @@ function macro_export_to_opened_video(lines, selectedLines)
 	local videoExt = videoSource:match('.+%p.-(%..+)')
 	local supported = false
 
-	for exten in supEx:gmatch('*(%..-);') do
-		if exten == videoExt then supported = true; break end
+	for exten in supEx:gmatch('%*(%..-);') do
+		aegisub.debug.out(exten)
+		if exten:lower() == videoExt:lower() then supported = true; break end
 	end
 
 	setLastUsedPath(nil, ext)
