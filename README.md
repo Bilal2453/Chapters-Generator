@@ -20,9 +20,10 @@ For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plu
 2) &#x202b; أعد تشغيل الإيجيسب، أو أعد تحميل الأضافات
 
 ## How to use | كيفية الاستخدام
+**Outdated**
+
 1. Create a new subtitle line.
 1) &#x202b; انشئ سطر ترجمة جديد
-
 
 2. Toggle line comment on.
 2) &#x202b; حَوِّل سطر الترجمة إلى تعليق
