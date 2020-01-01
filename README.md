@@ -1,9 +1,9 @@
-# Chapter-Genrator
-Script that Generates video chapters.
+# Chapters-Generator
+A sctip that Generates Video's Chapters Using Aegisub's Timeline.
 
 .برنامج يولد ملفات الفصول (تشابتر) للفيديوهات
 ## Supporting | الدعم
-For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plugin.
+This Script only available as an [Aegisub](http://www.aegisub.org/) plugin.
 
 &#x202b; للوقت الراهن، هذا البرنامج متوفر كإضافة لبرنامج [الإيجيسب](http://www.aegisub.org/) فقط 
 ## Supported Formats | الصيغ الدعومة
@@ -33,7 +33,7 @@ For now, This Script only available as an [Aegisub](http://www.aegisub.org/) plu
 
 3. Type your chapter's title/name.
 3) &#x202b; اكتب في سطر الترجمة عنوان الفصل أو اسمه
-
+  
 ![Step 3: Title](https://i.imgur.com/k6HZNcA.png)
 
 4. Time your translation line, Chapter's start and chapter's end.
