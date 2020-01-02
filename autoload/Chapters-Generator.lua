@@ -16,7 +16,7 @@ script_namespace	= "Bilal2453.Chapters-Generator"
 script_description= "Generates Video's Chapters Using Aegisub's Timeline."
 script_version		= '2.5.0'
 script_author		= "Bilal Bassam, Bilal2453@github.com"
-script_modified	= "31 December 2019"
+script_modified	= "1 January 2020"
 
 local settingsCheckboxes = {}
 local dp = aegisub.decode_path
