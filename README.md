@@ -20,7 +20,7 @@ This Script only available as an [Aegisub](http://www.aegisub.org/) plugin.
 2) &#x202b; أعد تشغيل الإيجيسب، أو أعد تحميل الأضافات
 
 ## Documentations | التعليمات
-For Documentations and Instructions about using this script, please see the [wiki](https://github.com/Bilal2453/Chapters-Generator/wiki/General-instructions)
+For Documentations and Instructions about using this script, please read the [wiki](https://github.com/Bilal2453/Chapters-Generator/wiki/General-instructions)
 
 &#x202b;للتعليمات حول طريقة استخدام هذه الإضافة، يرجى قراءة [التعليمات](https://github.com/Bilal2453/Chapters-Generator/wiki/General-instructions)
 ## Known Problems
