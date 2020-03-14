@@ -244,11 +244,11 @@ local function createCheckbox(name, label, hint, defaultValue)
 	settingsCheckboxes[name] = self
 end
 
-createCheckbox('ignoreValidityRules', 'Ignore Validity Rules', "This option Makes the Plug-in Treat all Lines as they had 'chapter' Written inside the Effect Field and as they're Comments.\n\nRecommended when Using Aegisub only for Chapters without Subtitles.")
-createCheckbox('useSelectedLines', 'Use Selected Lines', "This would Make the Plug-in Use Selected Lines when there's and Ignores everything else.\n\nBy Default it Doesn't Ignore validity Rules.", true)
-createCheckbox('deleteLinesAfterExport', 'Delete Lines After Exporting', "This will Delete Chapter Lines that have been Used after Exporting the Chapters.\n\nTo Restore Deleted Lines, Undo Changes.")
+createCheckbox('ignoreValidityRules', 'Ignore Validity Rules', "This option Makes the Plug-in Treat all Lines as they had 'chapter' Written inside the Effect Field and as they're Comments.\n\nRecommended when Using Aegisub only for Chapters without Subtitles.", false)
+createCheckbox('useSelectedLines', 'Use Selected Lines', "This would Make the Plug-in Use Selected Lines when there's and Ignores everything else.\n\nBy Default it Doesn't Ignore validity Rules.", false)
+createCheckbox('deleteLinesAfterExport', 'Delete Lines After Exporting', "This will Delete Chapter Lines that have been Used after Exporting the Chapters.\n\nTo Restore Deleted Lines, Undo Changes.", false)
 createCheckbox('saveLastUsedPath', 'Remember Last Used Path', "Saves the Last Directory You Used to Export the Chapters, Also Saves the Last Used 'Extension'.", true)
-createCheckbox('ignoreEndTime', 'Ignore End Time', "Don't Use End Time, So only Start Time would be Used and Written.\n\nUseful when Using 'XML/Matroska extension.'")
+createCheckbox('ignoreEndTime', 'Ignore End Time', "Don't Use End Time, So only Start Time would be Used and Written.\n\nUseful when Using 'XML/Matroska extension.'", false)
 createCheckbox('askBeforeConverting', 'Ask Before Convert to MKV', "Asks you to Convert non-supported Videos to MKV before Merging Start.\nNote that only MKV Videos Can have Chapters\n\nUncheck this Box to Convert Videos without Asking.", true)
 
 function show_export_ext(sel)
